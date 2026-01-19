@@ -118,15 +118,6 @@ app.get('/api/weblarek/product/', (req, res) => {
 	})
 })
 
-// GET /api/weblarek/product/:id - получить товар по ID
-app.get('/api/weblarek/product/:id', (req, res) => {
-	const product = products.find(p => p.id === req.params.id)
-	if (!product) {
-		return res.status(404).json({ error: 'NotFound' })
-	}
-	res.json(product)
-})
-
 // === ORDER ENDPOINTS ===
 
 // POST /api/weblarek/order - создать новый заказ
