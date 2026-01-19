@@ -127,36 +127,7 @@ app.get('/api/weblarek/product/:id', (req, res) => {
 	res.json(product)
 })
 
-// POST /api/weblarek/product - создать новый товар
-app.post('/api/weblarek/product', (req, res) => {
-	const { title, price, description, category, image } = req.body
-
-	if (!title || price === undefined) {
-		return res.status(400).json({ error: 'Поля title и price обязательны' })
-	}
-
-	const newProduct = {
-		id: String(Date.now()),
-		title,
-		price,
-		description: description || '',
-		category: category || 'other',
-		image: image || null
-	}
-
-	products.push(newProduct)
-	res.status(201).json(newProduct)
-})
-
 // === ORDER ENDPOINTS ===
-
-// GET /api/weblarek/order - получить все заказы
-app.get('/api/weblarek/order', (req, res) => {
-	res.json({
-		total: orders.length,
-		items: orders
-	})
-})
 
 // POST /api/weblarek/order - создать новый заказ
 app.post('/api/weblarek/order', (req, res) => {
